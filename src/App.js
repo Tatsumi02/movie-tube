@@ -4,13 +4,22 @@ import Home from './components/Home'
 import Header from './components/Header'
 import Barre from './components/Barre'
 import React from 'react'
+import {
+        Button,
+        Col,
+        Container,
+        Row,
+        Form,
+        Alert,
+        Modal,
+      } from 'react-bootstrap'
 
 class  App extends React.Component {
   constructor(props){
     super(props);
 
     this.state = {
-      key:'Naruto',
+      key:'Storm',
       error:null,
             isLoaded:false,
             items:[]
@@ -78,7 +87,7 @@ class  App extends React.Component {
         <div className="z">
                <br /><br /><br />
                 <form>
-                   <input type="search" value={this.state.key} onChange={this._handlekey}  className="barre" placeholder="Cherche un film" />
+                   <input type="search" className="form-control" value={this.state.key} onChange={this._handlekey}   placeholder="Cherche un film" />
                    
                 </form>
        </div>
@@ -97,10 +106,10 @@ class  App extends React.Component {
         <Header />
         <div className="z">
                <br /><br /><br />
-                <form>
-                   <input type="search" value={this.state.key} onChange={this._handlekey}  className="barre" placeholder="Cherche un film" />
+                <Form>
+                   <Form.Control size="lg" type="search" value={this.state.key} onChange={this._handlekey}  className="barre" placeholder="Cherche un film" />
                    
-                </form>
+                </Form>
        </div>
          <header className="App-header">
 
@@ -126,28 +135,49 @@ return (
    <header className="App-header">
    <kbd>Nombre de pages: {items.total_pages}</kbd>
        
-   <div  id="zf" >
+   {/* <div  id="zf" > */}
+    <Container>
+      <Row className="justify-content-md-center">
+        <Col md="11">
+        
             {items.map(item =>(
-              
-                <div key={item.id}>
-                   {item.title}
-                  <div id="in">
-                    <br />
-                   <p id="des">
-                     {item.overview}
-                     <hr />
+
+             
+                <div key={item.id} style={{display:'flex', flexDirection:'rows', margin:'3%', background:'#888e9b', padding:'3%'}}>
+
+                    <Col >
+                        {item.title}
+                         <img src={"https://image.tmdb.org/t/p/w300"+item.poster_path} />
+                         <br /><br />
+                         <Button as={Col} md="10" variant="dark"> Detail </Button>
+                    </Col>
+
+                    
+                    <div style={{padding:'3%',textAlign:'left'}}>
+                      <Col xs={12} lg={11}>
+                          {item.overview}
+                      </Col>
+                    </div>
+
+                   <Col xs lg="2" style={{textAlign:'left'}}>
                      date de sortie: {item.release_date} <br />
                      titre original:  {item.original_title} <br />
                      nombre de vote: {item.vote_count} <br /> 
-                     langue d'origine: {item.original_language}
-                   </p>
-                    <img src={"https://image.tmdb.org/t/p/w300"+item.poster_path} />
-                  </div>
+                     langue d'origine: {item.original_language} <br />
+                    
+                   </Col>
+                   
+                
+                 
                   <br/><br/>
                 </div>
                
             ))}
-    </div>
+
+          </Col>
+        </Row>
+     </Container>
+    {/* </div> */}
       </header>
     </div>
       )
