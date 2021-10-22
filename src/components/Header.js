@@ -23,7 +23,15 @@ class Header extends React.Component{
 
                 <Navbar bg="secondary" fixed="top" variant="dark" expand="lg">
   <Container>
-    <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+    <Navbar.Brand href="#home">
+    
+    <span style={{background:'black',padding:'5%',borderRadius:'10px'}}>
+       <span style={{background:'red',padding:'2%',margin:'2%',borderRadius:'5px'}}>
+          Movie
+       </span>
+      -Request
+    </span>
+    </Navbar.Brand>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">
       <Nav className="me-auto">
